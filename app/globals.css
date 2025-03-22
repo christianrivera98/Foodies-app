@@ -8,8 +8,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-papaya-whip: #FDF0D5;
+  --color-barn-red: #780000;
+  --color-fire-brick:#C1121F
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +24,14 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7)
+}
+.text-stroke {
+  -webkit-text-stroke: 4px rgba(19, 16, 16, 0.822);
+}
+.text-stroke-buttons {
+  -webkit-text-stroke: 0px rgb(0, 0, 0);
 }
