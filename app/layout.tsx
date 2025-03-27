@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
-import { Phudu } from "next/font/google";
 import "./globals.css";
-import Header from "../components/header";
-import Home from "./page";
 import { phuduSans } from "@/fonts/fonts";
 
 export const metadata: Metadata = {
@@ -22,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${phuduSans.className} antialiased`}
       >
-        <Home/>
+        {children}
       </body>
     </html>
   );

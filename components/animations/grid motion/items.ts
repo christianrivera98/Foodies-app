@@ -3,7 +3,6 @@ import pizzaImg from "@/assets/pizza.jpg";
 import burguerImg from "@/assets/burger.jpg";
 import curryImg from "@/assets/curry.jpg";
 import tomatoImg from "@/assets/tomato-salad.jpg";
-import logo from "@/assets/logoNextLevelNonBG.png"
 
 export const items: string[] | undefined =[
         'Item1',
