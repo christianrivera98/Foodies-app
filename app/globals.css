@@ -10,7 +10,8 @@
   --color-foreground: var(--foreground);
   --color-papaya-whip: #FDF0D5;
   --color-barn-red: #780000;
-  --color-fire-brick:#C1121F
+  --color-fire-brick:#C1121F;
+  --color-persimmon: #f48c06;
 }
 
 @media (prefers-color-scheme: dark) {

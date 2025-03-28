@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import logo from "@/assets/logoNextLevelNonBG.png";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export function HomeHeader() {
   const { scrollY } = useScroll();
@@ -18,31 +19,41 @@ export function HomeHeader() {
     <>
       <div>
         <motion.header
-          className={`fixed top-0 left-0 right-0 flex justify-between items-center  px-20 bg-papaya-whip font-semibold antialiased z-[100]`}
+          className= "fixed top-0 left-0 right-0 flex justify-between items-center px-20 py-2  bg-papaya-whip backdrop-blur-lg shadow-lg font-semibold antialiased z-[100]"
           style={{ opacity: headerVisible, y: headerY }}
         >
-          <Link onClick={onLogo} className="flex items-center gap-4" href="/">
+          <div onClick={onLogo} className="flex items-center gap-4" >
             <Image
-              width={100}
-              height={100}
+              width={80}
+              height={80}
               src={logo.src}
               alt="This my logo"
               priority
             />
-            <h1 className="text-4xl">NextLevel Food</h1>
-          </Link>
+            <h1 className="text-2xl">NextLevel Food</h1>
+          </div>
           <nav className="mr-20">
-            <ul className="flex gap-14 text-xl ">
-              <li>
+            <ul className="flex gap-14 text-[18px] ">
+              <motion.li className="hover:text-barn-red"
+                initial={{ scale: 1 }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.1 }}
+              >
                 <Link onClick={onLinks} href="/pages/meals">
                   Browse Meals
                 </Link>
-              </li>
-              <li>
+              </motion.li>
+              <motion.li className="hover:text-barn-red"
+                initial={{ scale: 1 }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.1 }}
+              >
                 <Link onClick={onLinks} href="/pages/community">
                   Foodies Community
                 </Link>
-              </li>
+              </motion.li>
             </ul>
           </nav>
         </motion.header>

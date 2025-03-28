@@ -9,8 +9,9 @@ import { motion } from "motion/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { HomeHeader } from "@/components/home/header";
+import ImagesSlideShow from "@/components/home/image-slideshow/image-slideshow";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,7 +21,9 @@ export default function Home() {
   const featuresRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
 
+
   useEffect(() => {
+    window.scrollTo(0, 0);
     const timeLine = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
@@ -67,8 +70,9 @@ export default function Home() {
 
   return (
     <>
+    <HomeHeader />
       <div ref={containerRef} className="relative">
-        <HomeHeader />
+        
         <motion.div className="relative flex items-center justify-center h-screen w-full  bg-barn-red">
           <div className="absolute inset-0 bg-black/10 z-10" />
           <motion.div
@@ -82,18 +86,19 @@ export default function Home() {
               <Image src={arrowDown} alt="arrow down" />
             </button>
           </div>
-
           <div
             ref={featuresRef}
-            className="absolute w-full h-screen flex justify-center items-center "
+            className="absolute w-full h-screen"
           >
-            <HomeFeatures />
+            <div >
+              <ImagesSlideShow />
+            </div>
           </div>
-
           <div ref={gridRef}>
             <GridMotion items={items} gradientColor="black" />
           </div>
         </motion.div>
+        <HomeFeatures />
       </div>
     </>
   );
