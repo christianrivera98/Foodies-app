@@ -95,10 +95,20 @@ export default function ImagesSlideShow() {
               Taste & share food from all over the world.
             </p>
             <div className="flex gap-10 mt-10 text-[20px]">
-              <button className="text-black hover:text-barn-red cursor-pointer">Join the Comunity</button>
-              <button className="w-[160px] h-12 rounded-lg bg-papaya-whip text-barn-red font-bold cursor-pointer">
+              <motion.button className="text-black  cursor-pointer"
+                initial={{scale: 1}}
+                whileHover={{color: "#f48c06", scale: 1.1}}
+              >
+                Join the Comunity
+              </motion.button>
+              <motion.button className="w-[160px] h-12 rounded-lg bg-papaya-whip text-black font-bold cursor-pointer"
+                initial={{scale:1}}
+                whileHover={{scale:1.1, color:"#780000"}}
+                whileTap={{scale: 0.95}}
+                transition={{duration: 0.2}}
+              >
                 Explore Meals
-              </button>
+              </motion.button>
             </div>
           </div>
         </div>

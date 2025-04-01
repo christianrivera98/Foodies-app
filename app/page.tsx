@@ -4,16 +4,18 @@ import GridMotion from "@/components/animations/grid motion/gridMotion";
 import { items } from "@/components/animations/grid motion/items";
 import HomeFeatures from "@/components/home/homeFeatures";
 import HomeHero from "@/components/home/homeHero";
-import arrowDown from "@/assets/icons/arrow_downward.svg";
 import { motion } from "motion/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { HomeHeader } from "@/components/home/header";
 import ImagesSlideShow from "@/components/home/image-slideshow/image-slideshow";
 
 gsap.registerPlugin(ScrollTrigger);
+// const screenWidth = window.innerWidth;
+// let distance;
+
+// if (screenWidth >= )
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -39,7 +41,7 @@ export default function Home() {
       const rows = gridRef.current.querySelectorAll(".grid-row");
       rows.forEach((row, i) => {
         const direction = i % 2 === 0 ? -1 : 1;
-        timeLine.to(row, { x: direction * 2500, ease: "power2.out" }, 0);
+        timeLine.to(row, { x: direction * (window.innerWidth * 1.5), ease: "power2.out" }, 0);
       });
     }
 
@@ -81,11 +83,7 @@ export default function Home() {
           >
             <HomeHero />
           </motion.div>
-          <div className="bg-barn-red absolute">
-            <button>
-              <Image src={arrowDown} alt="arrow down" />
-            </button>
-          </div>
+          
           <div
             ref={featuresRef}
             className="absolute w-full h-screen"

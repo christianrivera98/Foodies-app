@@ -36,3 +36,7 @@ body {
 .text-stroke-buttons {
   -webkit-text-stroke: 0px rgb(0, 0, 0);
 }
+
+.active{
+  color: #780000 ;
+}

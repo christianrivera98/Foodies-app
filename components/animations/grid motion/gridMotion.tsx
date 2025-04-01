@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useRef, FC } from "react";
-import { gsap } from "gsap";
+import { useRef, FC } from "react";
 import Image from "next/image";
 import logo from "@/assets/logoNextLevelNonBG.png"
 
@@ -16,7 +15,6 @@ const GridMotion: FC<GridMotionProps> = ({
 }) => {
   const gridRef = useRef<HTMLDivElement>(null);
   const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const mouseXRef = useRef<number>(0);
   const totalItems = 28;
   const defaultItems = Array.from(
     { length: totalItems },
@@ -49,7 +47,7 @@ const GridMotion: FC<GridMotionProps> = ({
                 const content = combinedItems[rowIndex * 7 + itemIndex];
                 return (
                   <div key={itemIndex} className="relative z-0">
-                    <div className="relative w-full h-full overflow-hidden rounded-[10px] bg-[#111] flex items-center justify-center text-white text-[1.5rem]">
+                    <div className="relative w-full h-full overflow-hidden rounded-[10px] bg-[#111] flex items-center justify-center ">
                       {typeof content === 'string' && content.endsWith(".jpg")  ? (
                         <div
                           className="w-full h-full bg-cover bg-center absolute top-0 left-0"

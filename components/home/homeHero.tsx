@@ -1,8 +1,9 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
+import arrowDown from "@/assets/icons/arrow_downward.svg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,6 +49,19 @@ export default function HomeHero() {
               Explore Meals
             </motion.button>
           </Link>
+          <motion.div className="flex justify-center opacity-70 items-center animate-bounce absolute bottom-[-200px] w-[80px] h-[80px] z-10 bg-barn-red  rounded-full "
+            initial= {{opacity: 0, y: -500}}
+            animate={{opacity: 1, y: 0}}
+            transition={{
+              duration: 1,
+              delay: 1.2 ,
+              scale: { type: "spring", visualDuration: 0.6, bounce: 0.2 },
+            }}
+          >
+            <button>
+              <Image className="w-[50px]" src={arrowDown} alt="arrow down" />
+            </button>
+          </motion.div>
         </div>
       </motion.div>
     </>
