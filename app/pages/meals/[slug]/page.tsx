@@ -1,13 +1,9 @@
 import HoverToolTip from "@/components/animations/hoverToolTip";
 import { getMeal } from "@/lib/meals";
 import Image from "next/image";
+import { SlugProps } from "./types";
 
-interface Props {
-  params: {
-    slug: string;
-  };
-}
-export default function MealDetailsPage({ params }: Props) {
+export default function MealDetailsPage({ params }: SlugProps) {
   const meal = getMeal(params.slug);
   meal.instructions = meal.instructions.replace(/\n/g, '<br />');
   return (
