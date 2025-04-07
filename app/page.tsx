@@ -12,10 +12,6 @@ import { HomeHeader } from "@/components/home/header";
 import ImagesSlideShow from "@/components/home/image-slideshow/image-slideshow";
 
 gsap.registerPlugin(ScrollTrigger);
-// const screenWidth = window.innerWidth;
-// let distance;
-
-// if (screenWidth >= )
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
