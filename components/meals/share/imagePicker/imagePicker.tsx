@@ -1,5 +1,4 @@
-"use client";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { PickerProps } from "./types";
 import Image from "next/image";
 
@@ -8,19 +7,29 @@ export default function ImagePicker({ label, name }: PickerProps) {
   const pickerButton = useRef<HTMLInputElement>(null);
   const [loadedImage, setLoadedImage] = useState <string | null> (null);
 
-  function onClickPickButton() {
+  function handlePickButton() {
     pickerButton.current?.click();
   };
   function handleOnChage(e : ChangeEvent<HTMLInputElement>) {
     const image = e.target.files?.[0];
 
-    if (!image) {
-        setLoadedImage(null)
+    if (!image || !image.type.startsWith('image/')) {
+        setLoadedImage(null);
+        alert('You can only choose file type image.')
         return;
     } 
         const imageUrl = URL.createObjectURL(image);
         setLoadedImage(imageUrl);
   };
+// Revoke the previous URL when changing the image to free memory:
+  useEffect(() => {
+    return () => {
+      if(loadedImage){
+        URL.revokeObjectURL(loadedImage);
+      }
+    }
+  }, [loadedImage])
+  
   return (
     <div>
       <label htmlFor={name}>{label}</label>
@@ -41,9 +50,10 @@ export default function ImagePicker({ label, name }: PickerProps) {
           name={name}
           ref={pickerButton}
           onChange={handleOnChage}
+          required
         />
         <button
-          onClick={onClickPickButton}
+          onClick={handlePickButton}
           className="bg-gradient-to-r from-persimmon to-[#e85d04] p-2 rounded-2xl mt-4 w-[200px] h-[50px] transition hover:scale-105 active:scale-95 cursor-pointer"
           type="button"
         >
