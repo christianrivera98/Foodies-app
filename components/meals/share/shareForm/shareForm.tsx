@@ -1,11 +1,19 @@
 "use client";
 
+import { useFormState } from "react-dom";
 import ImagePicker from "../imagePicker/imagePicker";
 import { PickerProps } from "../imagePicker/types";
+import { shareMeal } from "@/lib/actions/meals";
 
-export default function ShareForm({ label }: PickerProps) {
+export default function ShareForm() {
+
+  const [state, formAction] = useFormState(shareMeal, {message:''});
   return (
-    <>
+    <form
+          className="flex flex-col p-[40px] w-[800px] border-4 border-papaya-whip border-dashed rounded-[50px] mt-[100px]"
+          action={formAction}
+          encType="multipart/form-data"
+        >
       <div className="">
         <p className="flex flex-col gap-1">
           <label className="text-[18px]" htmlFor="name">
@@ -73,7 +81,8 @@ export default function ShareForm({ label }: PickerProps) {
           required
         ></textarea>
       </p>
-      <ImagePicker label={label} name="image" />
+      <ImagePicker label='Pick an image' name="image" />
+      {state?.message && <p className="text-red-600">{state.message}</p>}
       <p className="flex justify-center items-center gap-1 mt-[10px] ">
         <button
           className="bg-papaya-whip w-[200px] p-[10px] text-[20px] text-barn-red rounded-xl hover:bg-barn-red hover:text-papaya-whip cursor-pointer transition hover:scale-105 active:scale-95"
@@ -82,6 +91,6 @@ export default function ShareForm({ label }: PickerProps) {
           Share Meal
         </button>
       </p>
-    </>
+    </form>
   );
 }

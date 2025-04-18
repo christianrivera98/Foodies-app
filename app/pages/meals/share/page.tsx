@@ -22,12 +22,9 @@ export default function Share({ label }: PickerProps) {
         </p>
       </header>
       <main className="flex justify-center items-center ">
-        <form
-          className="flex flex-col p-[40px] w-[800px] border-4 border-papaya-whip border-dashed rounded-[50px] mt-[100px]"
-          action={shareMeal}
-        >
-          <ShareForm label={label} name="image" />
-        </form>
+        
+          <ShareForm/>
+        
       </main>
     </>
   );
