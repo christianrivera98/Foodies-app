@@ -50,7 +50,6 @@ export default function ImagePicker({ label, name }: PickerProps) {
           name={name}
           ref={pickerButton}
           onChange={handleOnChage}
-          required
         />
         <button
           onClick={handlePickButton}

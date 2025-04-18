@@ -1,18 +1,16 @@
 "use client";
 
-import { useFormState } from "react-dom";
 import ImagePicker from "../imagePicker/imagePicker";
-import { PickerProps } from "../imagePicker/types";
 import { shareMeal } from "@/lib/actions/meals";
+import { useActionState } from "react";
 
 export default function ShareForm() {
 
-  const [state, formAction] = useFormState(shareMeal, {message:''});
+  const [state, formAction] = useActionState(shareMeal, {message:''});
   return (
     <form
           className="flex flex-col p-[40px] w-[800px] border-4 border-papaya-whip border-dashed rounded-[50px] mt-[100px]"
           action={formAction}
-          encType="multipart/form-data"
         >
       <div className="">
         <p className="flex flex-col gap-1">
@@ -23,8 +21,8 @@ export default function ShareForm() {
             className="p-2 border-1 rounded-[4px] focus:border-persimmon outline-none placeholder:text-[12px]"
             placeholder="Write your name here..."
             type="text"
-            id="name"
-            name="name"
+            id="creator"
+            name="creator"
             required
           />
         </p>
@@ -36,8 +34,8 @@ export default function ShareForm() {
             className="p-2 border-1 rounded-[4px] focus:border-persimmon outline-none placeholder:text-[12px]"
             placeholder="Write your email here..."
             type="email"
-            id="email"
-            name="email"
+            id="creator_email"
+            name="creator_email"
             required
           />
         </p>
