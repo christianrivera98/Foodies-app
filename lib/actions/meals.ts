@@ -5,15 +5,6 @@ import path from "path";
 import { db } from "../meals";
 import slugify from "slugify";
 
- interface MealData {
-    title: string;
-    summary: string;
-    instructions: string;
-    image: File | null;
-    creator: string;
-    creator_email: string;
-
-};
 
 type FormState = {
   message: string;
@@ -21,9 +12,7 @@ type FormState = {
 
 export async function shareMeal(prevState: FormState, formData: FormData): Promise<FormState> {
   
-
- 
-    const title = formData.get("title") as string;
+try{    const title = formData.get("title") as string;
     const summary = formData.get("summary") as string;
     const instructions = formData.get("instructions") as string;
     const image=  formData.get("image") as File;
@@ -48,5 +37,12 @@ export async function shareMeal(prevState: FormState, formData: FormData): Promi
     `);
    stmt.run(slug, title,`/images/${fileName}`, summary, instructions, creator, creator_email);
    return {message:'Successfully registered meal.'} 
+}catch(error){
+  console.error('Error registering meal:', error);
+  return {message: 'Error registering meal.'}
 }
+
+}
+ 
+
 

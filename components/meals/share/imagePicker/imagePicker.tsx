@@ -43,13 +43,14 @@ export default function ImagePicker({ label, name }: PickerProps) {
         </div>
 
         <input
-          className="hidden"
+          className="absolte w-0 h-0 opacity-0"
           type="file"
           id={name}
           accept="image/png, image/jpeg, image/jpg"
           name={name}
           ref={pickerButton}
           onChange={handleOnChage}
+          required
         />
         <button
           onClick={handlePickButton}

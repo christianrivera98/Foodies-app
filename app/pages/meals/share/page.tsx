@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { PickerProps } from "@/components/meals/share/imagePicker/types";
 import ShareForm from "@/components/meals/share/shareForm/shareForm";
 import { shareMeal } from "@/lib/actions/meals";
@@ -22,9 +22,7 @@ export default function Share({ label }: PickerProps) {
         </p>
       </header>
       <main className="flex justify-center items-center ">
-        
-          <ShareForm/>
-        
+        <ShareForm />
       </main>
     </>
   );

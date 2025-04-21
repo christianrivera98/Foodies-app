@@ -9,7 +9,7 @@ export default function MealItem({
   creator,
 }: mealItemProp) {
   return (
-    <article className="flex flex-col justify-between w-[30rem] h-[auto] rounded-[20px] bg-linear-65 from-barn-red to-fire-brick shadow-black shadow-2xl overflow-hidden transition-all duration-300 ease-in-out">
+    <article className="flex flex-col justify-between w-[30rem] h-[32rem] rounded-[20px] bg-linear-65 from-barn-red to-fire-brick shadow-black shadow-2xl overflow-hidden transition-all duration-300 ease-in-out">
       <header>
         <div className="relative w-full h-[20rem]">
           <Image src={image} alt={title} fill className="object-cover"></Image>

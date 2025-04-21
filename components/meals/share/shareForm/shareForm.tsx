@@ -3,6 +3,7 @@
 import ImagePicker from "../imagePicker/imagePicker";
 import { shareMeal } from "@/lib/actions/meals";
 import { useActionState } from "react";
+import ShareFormSubmitted from "../../meals-form-submitted";
 
 export default function ShareForm() {
 
@@ -82,12 +83,7 @@ export default function ShareForm() {
       <ImagePicker label='Pick an image' name="image" />
       {state?.message && <p className="text-red-600">{state.message}</p>}
       <p className="flex justify-center items-center gap-1 mt-[10px] ">
-        <button
-          className="bg-papaya-whip w-[200px] p-[10px] text-[20px] text-barn-red rounded-xl hover:bg-barn-red hover:text-papaya-whip cursor-pointer transition hover:scale-105 active:scale-95"
-          type="submit"
-        >
-          Share Meal
-        </button>
+        <ShareFormSubmitted/>
       </p>
     </form>
   );
