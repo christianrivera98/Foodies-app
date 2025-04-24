@@ -1,3 +1,4 @@
+'use client';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "motion/react";
@@ -40,6 +41,7 @@ export default function HomeHero() {
           </Link>
           <Link href="/pages/meals">
             <motion.button
+              onClick={onButton}
               className="lg:w-80 w-40 backdrop-blur-sm  cursor-pointer hover:bg-gradient-to-l from-[#780000] to-[#540b0e]  text-papaya-whip lg:p-4 p-2 font-light hover:font-medium border-2 border-[papaya-whip] lg:text-3xl text-[14px] lg:rounded-2xl rounded-lg text-stroke-buttons"
               initial={{ scale: 1 }}
               whileHover={{ scale: 1.1, marginLeft: 8 }}

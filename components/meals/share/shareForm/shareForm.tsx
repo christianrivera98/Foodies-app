@@ -2,16 +2,34 @@
 
 import ImagePicker from "../imagePicker/imagePicker";
 import { shareMeal } from "@/lib/actions/meals";
-import { useActionState } from "react";
 import ShareFormSubmitted from "../../meals-form-submitted";
+import { useRef, useState, useTransition } from "react";
+import { redirect } from "next/navigation";
 
 export default function ShareForm() {
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+  const [pending, transition] = useTransition();
+  const formRef = useRef<HTMLFormElement>(null);
 
-  const [state, formAction] = useActionState(shareMeal, {message:''});
+  async function handleSubmit(formData: FormData) {
+    setError(null);
+    setSuccess(null);
+    transition(async () => {
+      const result = await shareMeal(formData);
+      if (result.error) {
+        setError(result.error);
+      } else if (result.success) {
+        sessionStorage.setItem("success", result.success);
+        setTimeout(() => redirect('/pages/meals'), 3000);
+      }
+    });
+  }
   return (
     <form
+          ref={formRef}
           className="flex flex-col p-[40px] w-[800px] border-4 border-papaya-whip border-dashed rounded-[50px] mt-[100px]"
-          action={formAction}
+          action={handleSubmit}
         >
       <div className="">
         <p className="flex flex-col gap-1">
@@ -80,10 +98,17 @@ export default function ShareForm() {
           required
         ></textarea>
       </p>
+      
+      
+      
       <ImagePicker label='Pick an image' name="image" />
-      {state?.message && <p className="text-red-600">{state.message}</p>}
+      {error && (
+        <div className="absolute top-[-2rem] left-1/2 transform -translate-x-1/2 bg-red-100 text-red-800 p-2 rounded">
+          {error}
+        </div>
+      )}   
       <p className="flex justify-center items-center gap-1 mt-[10px] ">
-        <ShareFormSubmitted/>
+        <ShareFormSubmitted />
       </p>
     </form>
   );
