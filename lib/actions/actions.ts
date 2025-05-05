@@ -4,6 +4,7 @@ import { writeFile } from "fs/promises";
 import path from "path";
 import { db } from "../meals";
 import slugify from "slugify";
+import { revalidatePath } from "next/cache";
 
 export async function shareMeal(formData: FormData): Promise<{success?: string, error?: string}> {
   
@@ -30,8 +31,10 @@ try {
       VALUES (?, ?, ?, ?, ?, ?, ?)
     `);
     stmt.run(slug, title, `/images/${fileName}`, summary, instructions, creator, creator_email);
-
+    revalidatePath('/pages/meals')
     return { success: "Your meal has been shared successfully!" };
+    
+    
   } catch (error) {
     console.error("Error sharing meal:", error);
     return { error: "An error occurred while sharing your meal." }

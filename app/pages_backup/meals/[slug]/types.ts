@@ -1,4 +1,4 @@
-export interface SlugProps {
+export type  SlugProps = {
     params: {
         slug: string;
       };

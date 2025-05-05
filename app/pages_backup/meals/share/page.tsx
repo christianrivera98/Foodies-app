@@ -1,9 +1,7 @@
 "use client";
-import { PickerProps } from "@/components/meals/share/imagePicker/types";
 import ShareForm from "@/components/meals/share/shareForm/shareForm";
-import { shareMeal } from "@/lib/actions/meals";
 
-export default function Share({ label }: PickerProps) {
+export default function Share() {
   return (
     <>
       <header className="w-fit mt-[80px] ml-[100px]">

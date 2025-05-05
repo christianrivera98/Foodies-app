@@ -1,11 +1,21 @@
 import HoverToolTip from "@/components/animations/hoverToolTip";
-import { getMeal } from "@/lib/meals";
+import { getMeal, getMeals } from "@/lib/meals";
 import Image from "next/image";
-import { SlugProps } from "./types";
+import { Meal } from "@/components/meals/types/meal";
 
-export default function MealDetailsPage({ params }: SlugProps) {
-  const meal = getMeal(params.slug);
-  meal.instructions = meal.instructions.replace(/\n/g, '<br />');
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
+  const meals = await getMeals();
+  return meals.map(({ slug }: Meal) => ({ slug }));
+}
+
+export default async function MealDetailsPage({
+  params
+}: {
+  params: Promise<{slug : string}>
+}) {
+  const meal = await getMeal(params);
+  meal.instructions = meal.instructions.replace(/\n/g, "<br />");
+
   return (
     <>
       <div className="flex justify-center items-center">
