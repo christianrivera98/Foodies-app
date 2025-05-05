@@ -16,7 +16,7 @@ export default async function MealsPage() {
         <p className="font-light text-[32px] tracking-[1px] mb-4">
           Choose your favorite recipe and cook it yourself. It is easy and fun!
         </p>
-        <Link href="/pages/meals/share">
+        <Link href="/meals/share">
           <button className="p-2 font-medium text-[24px] rounded-xl tracking-[1px] cursor-pointer bg-barn-red text-papaya-whip">
             Share Your Favorite Recipe
           </button>

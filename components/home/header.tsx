@@ -40,7 +40,7 @@ export function HomeHeader() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.1 }}
               >
-                <Link  onClick={onLinks} href="/pages/meals">
+                <Link  onClick={onLinks} href="/meals">
                   Browse Meals
                 </Link>
               </motion.li>

@@ -5,15 +5,18 @@ import { Meal } from "@/components/meals/types/meal";
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const meals = await getMeals();
-  return meals.map(({ slug }: Meal) => ({ slug }));
+  return Promise.resolve(
+    meals.map(({ slug }: Meal) => ({
+      slug: String(slug),
+    }))
+  );
 }
 
-export default async function MealDetailsPage({
-  params
-}: {
-  params: Promise<{slug : string}>
-}) {
-  const meal = await getMeal(params);
+type Params = Promise<{slug:string[]}>;
+
+export default async function MealDetailsPage({params}: {params: Params}) {
+  const {slug} = await params;
+  const meal = await getMeal(slug);
   meal.instructions = meal.instructions.replace(/\n/g, "<br />");
 
   return (

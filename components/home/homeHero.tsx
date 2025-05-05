@@ -27,7 +27,7 @@ export default function HomeHero() {
           NEXTLEVEL FOOD
         </motion.h1>
         <div className="max-md:flex-col flex md:flex justify-center items-center gap-4 p-6 ">
-          <Link href={"/pages/community"}>
+          <Link href={"/community"}>
             <motion.button
               onClick={onButton}
               className="lg:w-80 w-40 backdrop-blur-sm cursor-pointer hover:bg-gradient-to-l from-[#780000] to-[#540b0e]  text-papaya-whip lg:p-4 p-2 font-light hover:font-medium border-2 border-[papaya-whip] lg:text-3xl text-[14px] lg:rounded-2xl rounded-lg text-stroke-buttons"
@@ -39,7 +39,7 @@ export default function HomeHero() {
               Join the Community
             </motion.button>
           </Link>
-          <Link href="/pages/meals">
+          <Link href="/meals">
             <motion.button
               onClick={onButton}
               className="lg:w-80 w-40 backdrop-blur-sm  cursor-pointer hover:bg-gradient-to-l from-[#780000] to-[#540b0e]  text-papaya-whip lg:p-4 p-2 font-light hover:font-medium border-2 border-[papaya-whip] lg:text-3xl text-[14px] lg:rounded-2xl rounded-lg text-stroke-buttons"

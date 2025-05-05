@@ -31,7 +31,7 @@ try {
       VALUES (?, ?, ?, ?, ?, ?, ?)
     `);
     stmt.run(slug, title, `/images/${fileName}`, summary, instructions, creator, creator_email);
-    revalidatePath('/pages/meals')
+    revalidatePath('/meals')
     return { success: "Your meal has been shared successfully!" };
     
     

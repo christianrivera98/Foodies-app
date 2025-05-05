@@ -22,7 +22,7 @@ export default function MealItem({
       <div className="p-2">
         <p className="text-[16px]">{summary}</p>
         <div className="flex justify-end m-[20px]">
-          <Link className="text-persimmon underline hover:scale-105 duration-200" href={`/pages/meals/${slug}`}>View Details</Link>
+          <Link className="text-persimmon underline hover:scale-105 duration-200" href={`/meals/${slug}`}>View Details</Link>
         </div>
       </div>
     </article>

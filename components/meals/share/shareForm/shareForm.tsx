@@ -19,7 +19,7 @@ export default function ShareForm() {
         setError(result.error);
       } else if (result.success) {
         sessionStorage.setItem("success", result.success);
-        setTimeout(() => redirect("/pages/meals"), 1000);
+        setTimeout(() => redirect("/meals"), 1000);
       }
     });
   }

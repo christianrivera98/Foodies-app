@@ -33,9 +33,9 @@ export default function Header() {
           >
             <Link
               className={`${
-                path.startsWith("/pages/meals") ? "active" : undefined
+                path.startsWith("/meals") ? "active" : undefined
               }`}
-              href="/pages/meals"
+              href="/meals"
             >
               Browse Meals
             </Link>
@@ -49,9 +49,9 @@ export default function Header() {
           >
             <Link
               className={`${
-                path.startsWith("/pages/community") ? "active" : undefined
+                path.startsWith("/community") ? "active" : undefined
               }`}
-              href="/pages/community"
+              href="/community"
             >
               Foodies Community
             </Link>
